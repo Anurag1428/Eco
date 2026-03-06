@@ -36,6 +36,7 @@ export default async function CartPage() {
     error = 'Unable to load cart data. Please refresh the page.'
   }
 
+  // Error state
   if (error || !cartData) {
     return (
       <main className="min-h-screen bg-white">
@@ -43,12 +44,13 @@ export default async function CartPage() {
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
             Shopping Cart
           </h1>
-          <ErrorState message={error} />
+          <ErrorState message={error || 'Unable to load cart data. Please refresh the page.'} />
         </div>
       </main>
     )
   }
 
+  // Empty cart
   if (cartData.items.length === 0) {
     return (
       <main className="min-h-screen bg-white">
